@@ -1,46 +1,21 @@
 syntax on
-colorscheme default
-set tabstop=2
-set shiftwidth=2
+filetype on
+set hlsearch
+filetype plugin indent on
+" On pressing tab, insert 2 spaces
 set expandtab
-set autochdir
-"set makeprg=g++\ -Werror\ -Wsign-conversion\ -std=c++17\ -g\ %
-nnoremap <F4> :update<cr>:make!<cr>:!./main<cr>
-nnoremap <F5> :update<cr>:!make test<cr>:!./test<cr>
-inoremap <C-Space> <C-N>
-set autoindent
-"set number
-"set relativenumber
+" show existing tab with 2 spaces width
+set tabstop=2
+set softtabstop=2
+" when indenting with '>', use 2 spaces width
+set shiftwidth=2
+set number
 
-"auto closing brackets
-inoremap " ""<left>
-inoremap ' ''<left>
-inoremap ( ()<left>
-inoremap [ []<left>
-inoremap { {}<left>
-inoremap {<CR> {<CR>}<ESC>O
-inoremap {;<CR> {<CR>};<ESC>O
+let g:netrw_liststyle = 3
+let g:netrw_banner = 0
+let g:netrw_browse_split = 2
+let g:netrw_winsize = 25
 
-if has("autocmd")
-  augroup templates
-    autocmd BufNewFile *.h 0r ~/.vim/templates/skeleton.h
-  augroup END
-endif
-
-"VIM Plug settings
-call plug#begin('~/.vim/plugged')
-Plug 'vim-airline/vim-airline'
-Plug 'scrooloose/nerdtree'
-call plug#end()
-
-"automatically open NERDTree on start and new buffers
-"autocmd VimEnter * NERDTree
-"autocmd BufWinEnter * NERDTreeMirror
-
-"change cursor in insert mode
-let &t_SI.="\e[5 q" "SI = INSERT mode
-let &t_SR.="\e[4 q" "SR = REPLACE mode
-let &t_EI.="\e[1 q" "EI = NORMAL mode (ELSE)
-
-"restore cursor on exit
-autocmd VimLeave * silent exec "! echo -ne '\e[5 q'"
+" Go Vim
+let g:go_fmt_command = "goimports"
+let g:go_auto_type_info = 1
