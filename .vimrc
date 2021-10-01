@@ -5,24 +5,31 @@ filetype plugin indent on
 " On pressing tab, insert 2 spaces
 set expandtab
 " show existing tab with 2 spaces width
-set tabstop=2
-set softtabstop=2
+set tabstop=4
+set softtabstop=4
 " when indenting with '>', use 2 spaces width
-set shiftwidth=2
+set shiftwidth=4
 set number
 set autowrite
+set ruler
 
 let g:netrw_liststyle = 3
-let g:netrw_banner = 0
-let g:netrw_browse_split = 3
 let g:netrw_winsize = 25
-augroup ProjectDrawer
-  autocmd!
-  autocmd VimEnter * :Vexplore
-augroup END
+let g:netrw_browse_split = 4
 
 " Go Vim
 let g:go_fmt_command = "goimports"
 let g:go_auto_type_info = 1
+let g:go_highlight_types = 1
+let g:go_highlight_fields = 1
+let g:go_highlight_functions = 1
+
 nnoremap <silent> <F5> :GoBuild<CR>
 nnoremap <silent> <F6> :GoRun<CR>
+
+" Open URL with gx
+nmap gx yiW:!open <cWORD><CR> "<C-r>"" & <CR><CR>
+
+" run Python scripts with F9
+autocmd FileType python map <buffer> <F9> :w<CR>:exec '!python3.9' shellescape(@%, 1)<CR>
+autocmd FileType python imap <buffer> <F9> <esc>:w<CR>:exec '!python3.9' shellescape(@%, 1)<CR>
