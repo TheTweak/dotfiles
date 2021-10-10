@@ -12,6 +12,8 @@ set shiftwidth=4
 set number
 set autowrite
 set ruler
+set scrolloff=7
+set noswapfile
 
 let g:netrw_liststyle = 3
 let g:netrw_winsize = 25
@@ -33,3 +35,6 @@ nmap gx yiW:!open <cWORD><CR> "<C-r>"" & <CR><CR>
 " run Python scripts with F9
 autocmd FileType python map <buffer> <F9> :w<CR>:exec '!python3.9' shellescape(@%, 1)<CR>
 autocmd FileType python imap <buffer> <F9> <esc>:w<CR>:exec '!python3.9' shellescape(@%, 1)<CR>
+
+" run CF stacks plugin for files named cloudformation-stacks.yaml
+autocmd BufRead,BufNewFile cloudformation-stacks.yaml Cfstacks
