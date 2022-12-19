@@ -6,10 +6,25 @@ call plug#begin('~/.vim/plugged')
 
 " requires
 Plug 'kyazdani42/nvim-tree.lua'
+Plug 'akinsho/toggleterm.nvim', {'tag' : '*'}
+Plug 'github/copilot.vim'
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
 call plug#end()
 
 lua <<EOF
+
+vim.filetype.add({
+    extension = {
+        ctmpl = 'go'
+    }
+})
+
+require("toggleterm").setup{
+  open_mapping = [[<c-\>]],
+--  direction = 'vertical' | 'horizontal' | 'tab' | 'float',
+  direction = 'float',
+}
 
 -- following options are the default
 require'nvim-tree'.setup {
@@ -82,4 +97,3 @@ nnoremap <leader>n :NvimTreeFindFile<CR>
 
 " a list of groups can be found at `:help nvim_tree_highlight`
 "highlight NvimTreeFolderIcon guibg=blue
-
