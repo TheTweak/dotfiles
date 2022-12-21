@@ -1,5 +1,6 @@
 set runtimepath^=~/.vim runtimepath+=~/.vim/after
 set termguicolors
+set cmdheight=0
 let &packpath = &runtimepath
 source ~/.vimrc
 let g:neovide_input_macos_alt_is_meta = v:true
